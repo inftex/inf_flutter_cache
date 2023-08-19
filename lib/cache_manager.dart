@@ -30,13 +30,13 @@ class CacheManager {
   Future<T?> get<T>(String key) async {
     final pref = await getPrefs();
     if (T is bool) {
-      return pref.getBool(key) as Future<T?>;
+      return pref.getBool(key) as T?;
     } else if (T is double) {
-      return pref.getDouble(key) as Future<T?>;
+      return pref.getDouble(key) as T?;
     } else if (T is int) {
-      return pref.getInt(key) as Future<T?>;
+      return pref.getInt(key) as T?;
     } else if (T is String) {
-      return pref.getString(key) as Future<T?>;
+      return pref.getString(key) as T?;
     }
     return null;
   }
