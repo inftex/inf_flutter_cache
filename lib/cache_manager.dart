@@ -31,18 +31,19 @@ class CacheManager {
 
   Future<T?> read<T>(String key) async {
     final pref = await getPrefs();
+    T? value;
     if (T == bool) {
-      return pref.getBool(key) as T?;
+      value = pref.getBool(key) as T;
     } else if (T == double) {
-      return pref.getDouble(key) as T?;
+      value = pref.getDouble(key) as T;
     } else if (T == int) {
-      return pref.getInt(key) as T?;
+      value = pref.getInt(key) as T;
     } else if (T == String) {
-      return pref.getString(key) as T?;
+      value = pref.getString(key) as T;
     } else if (T == List<String>) {
-      return pref.getStringList(key) as T?;
+      value = pref.getStringList(key) as T;
     }
-    return null;
+    return value;
   }
 
   Future<bool> remove<T>(String key) async {

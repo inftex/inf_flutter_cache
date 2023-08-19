@@ -60,10 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-    final cache = CacheManager.instance;
-    await CacheManager.instance.write<int>('test', 4);
-    int? test = await cache.read('test');
-    print('>>>>> $test');
+    checkOpenCount();
+  }
+
+  Future<int> checkOpenCount() async {
+    var count = await CacheManager.instance.read<int>('test') ?? 0;
+    print('>>>>> $count');
+    final newCount = count + 1;
+    await CacheManager.instance.write<int>('test', newCount);
+    return count;
   }
 
   @override
