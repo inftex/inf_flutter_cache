@@ -33,20 +33,20 @@ class CacheManager {
     final pref = await getPrefs();
     T? value;
     if (T == bool) {
-      value = pref.getBool(key) as T;
+      value = pref.getBool(key) as T?;
     } else if (T == double) {
-      value = pref.getDouble(key) as T;
+      value = pref.getDouble(key) as T?;
     } else if (T == int) {
-      value = pref.getInt(key) as T;
+      value = pref.getInt(key) as T?;
     } else if (T == String) {
-      value = pref.getString(key) as T;
+      value = pref.getString(key) as T?;
     } else if (T == List<String>) {
-      value = pref.getStringList(key) as T;
+      value = pref.getStringList(key) as T?;
     }
     return value;
   }
 
-  Future<bool> remove<T>(String key) async {
+  Future<bool> remove(String key) async {
     final pref = await getPrefs();
     return pref.remove(key);
   }
